@@ -4,6 +4,9 @@
 ```bash
 -Xmx1m -Xms1m  
 ```
+IDEA中配置：  
+![image](https://user-images.githubusercontent.com/13701989/72028723-96005280-32be-11ea-9b33-a37c0133edfd.png)
+
 
 测试代码：
 ```java
