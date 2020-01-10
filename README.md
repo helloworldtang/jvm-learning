@@ -5,11 +5,20 @@
 -Xmx1m -Xms1m  
 ```
 IDEA中配置：  
-![image](https://user-images.githubusercontent.com/13701989/72028723-96005280-32be-11ea-9b33-a37c0133edfd.png)
-
+![VM options](https://user-images.githubusercontent.com/13701989/72151747-fccb5c00-33e3-11ea-8013-a3661c2681b4.png)
 
 测试代码：
 ```java
+    /**
+     * -Xmx1m -Xms1m
+     * 抛异常了
+     * java.lang.OutOfMemoryError: Java heap space
+     * at com.tangcheng.jvm.oom.OOMCatcher.main(OOMCatcher.java:29)
+     * run finally
+     * end
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         try {
             byte[] _10M = new byte[1024 * 1024 * 1024];
@@ -18,17 +27,27 @@ IDEA中配置：
         } catch (Throwable e) {
             System.out.println("抛异常了");
             e.printStackTrace();
+        } finally {
+            /**
+             *java.lang.OutOfMemoryError 异常后，finally中的语句会被执行
+             */
+            System.out.println("run finally");
         }
-        System.out.println("hello");
+        /**
+         * java.lang.OutOfMemoryError 异常被catch后,下面打印会正常执行
+         */
+        System.out.println("end");
     }
+
 ```
 
 执行结果：
 ```text
 抛异常了
 java.lang.OutOfMemoryError: Java heap space
-at com.tangcheng.jvm.oom.OOMCatcher.main(OOMCatcher.java:28)
-hello
+	at com.tangcheng.jvm.oom.OOMCatcher.main(OOMCatcher.java:29)
+run finally
+end
 ```
 
 
