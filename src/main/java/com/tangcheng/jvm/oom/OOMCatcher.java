@@ -16,11 +16,11 @@ public class OOMCatcher {
 
     /**
      * -Xmx1m -Xms1m
-     * <p>
      * 抛异常了
      * java.lang.OutOfMemoryError: Java heap space
-     * at com.tangcheng.jvm.oom.OOMCatcher.main(OOMCatcher.java:28)
-     * hello
+     * at com.tangcheng.jvm.oom.OOMCatcher.main(OOMCatcher.java:29)
+     * run finally
+     * end
      *
      * @param args
      */
@@ -32,8 +32,16 @@ public class OOMCatcher {
         } catch (Throwable e) {
             System.out.println("抛异常了");
             e.printStackTrace();
+        } finally {
+            /**
+             *java.lang.OutOfMemoryError 异常后，finally中的语句会被执行
+             */
+            System.out.println("run finally");
         }
-        System.out.println("hello");
+        /**
+         * java.lang.OutOfMemoryError 异常被catch后,下面打印会正常执行
+         */
+        System.out.println("end");
     }
 
 
