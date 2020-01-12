@@ -29,12 +29,14 @@ public class StackOverFlowCatcher {
         } finally {
             /**
              * java.lang.StackOverflowError 异常后会执行finally中的语句
+             * 不论是否catch，finally的语句块都会执行
              */
             System.out.println("run finally");
         }
         /**
          * java.lang.StackOverflowError 异常被catch后
-         * 会执行下面的打印
+         * 会执行下面的打印。
+         * 如果没有catch，则不会打印
          */
         System.out.println("end");
     }
